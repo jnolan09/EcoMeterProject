@@ -4,12 +4,21 @@
  */
 package ecometer.EcoMeter;
 
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
+import java.util.ArrayList;
+
 /**
  *
  * @author joshu
  */
 public class CarbonFootprintTracker extends javax.swing.JFrame {
+    //Main components for tracking and calculating 
     private MainMenu mainMenu;
+    private ArrayList<EmissionsRecord>emissionRecords;
+    private EmissionsCalculator calculator;
 
     /**
      * Creates new form CarbonFootprintTracker
@@ -17,8 +26,11 @@ public class CarbonFootprintTracker extends javax.swing.JFrame {
     public CarbonFootprintTracker(MainMenu main) {
         initComponents();
         this.mainMenu = main;
+        this.emissionRecords = new ArrayList<>();
+        this.calculator = new EmissionsCalculator();
+        emissionsTf.setEditable(false);
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,30 +40,39 @@ public class CarbonFootprintTracker extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        typeLbl = new javax.swing.JLabel();
         emissionsLbl = new javax.swing.JLabel();
         amountLbl = new javax.swing.JLabel();
         calculateBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         carbonbackBtn = new javax.swing.JButton();
         emissionsTypeCombo = new javax.swing.JComboBox<>();
-        typeTf = new javax.swing.JTextField();
         amountTf = new javax.swing.JTextField();
         emissionsTf = new javax.swing.JTextField();
+        saveBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        recordsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 350));
-        setSize(new java.awt.Dimension(400, 500));
-
-        typeLbl.setText("Type:");
+        setSize(new java.awt.Dimension(400, 400));
 
         emissionsLbl.setText("Emissions: ");
 
         amountLbl.setText("Amount: ");
 
         calculateBtn.setText("Calculate");
+        calculateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateBtnActionPerformed(evt);
+            }
+        });
 
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         carbonbackBtn.setText("Back to Main Menu");
         carbonbackBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,9 +83,24 @@ public class CarbonFootprintTracker extends javax.swing.JFrame {
 
         emissionsTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Energy Emissions", "Diet Emissions", "Waste Emissions", " " }));
 
-        typeTf.addActionListener(new java.awt.event.ActionListener() {
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeTfActionPerformed(evt);
+                saveBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        recordsBtn.setText("Records");
+        recordsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordsBtnActionPerformed(evt);
             }
         });
 
@@ -72,74 +108,192 @@ public class CarbonFootprintTracker extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(calculateBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(emissionsTypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(amountLbl)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(emissionsLbl)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(typeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(143, 143, 143)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(typeTf, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(emissionsTf, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(amountTf, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(59, 59, 59))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(carbonbackBtn)
-                .addGap(131, 131, 131))
+                                .addComponent(emissionsLbl)
+                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(77, 77, 77)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(emissionsTf, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(recordsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(carbonbackBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(amountLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(amountTf, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(calculateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(emissionsTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calculateBtn)
+                    .addComponent(amountLbl)
+                    .addComponent(amountTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeLbl)
-                    .addComponent(typeTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(amountTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(amountLbl))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emissionsLbl)
                     .addComponent(emissionsTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emissionsLbl))
-                .addGap(34, 34, 34)
+                    .addComponent(clearBtn))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clearBtn)
-                    .addComponent(calculateBtn))
+                    .addComponent(deleteBtn)
+                    .addComponent(recordsBtn)
+                    .addComponent(saveBtn))
                 .addGap(34, 34, 34)
                 .addComponent(carbonbackBtn)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Returns to main menu
     private void carbonbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carbonbackBtnActionPerformed
         mainMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_carbonbackBtnActionPerformed
-
-    private void typeTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeTfActionPerformed
-
+    //Displays saved records in a table
+    private void recordsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordsBtnActionPerformed
+        if (emissionRecords.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "No records",
+                    "Records",
+            JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        //Creates table
+        StringBuilder records = new StringBuilder();
+        records.append(String.format("%-12s %-20s %-10s %-10s\n",
+                "Date", "Type", "Amount", "Emissions"));
+        records.append("------------------------------------------------------------------\n");
+        //Adding records
+        for (EmissionsRecord record : emissionRecords) {
+            records.append(String.format("%-12s %-20s %-10.2f %-10.2f\n",
+                    record.getDate(),
+                    record.getType(),
+                    record.getAmount(),
+                    record.getEmissions()));
+        }
+        //Display records in a scrollable window
+        JTextArea textArea = new JTextArea(records.toString());
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new Dimension(500, 300));
+        JOptionPane.showMessageDialog(this,
+                scrollPane,
+                "Emission Records",
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_recordsBtnActionPerformed
+    //Calculates emissions based on type and amount
+    private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
+        try {
+            //Validates emission type
+            String type = emissionsTypeCombo.getSelectedItem().toString();
+            if (type.equals("Choose")) {
+                JOptionPane.showMessageDialog(this,
+                        "Select an emission type",
+                        "Input Error",
+                JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            //Validates amount
+            double amount;
+            try {
+                amount = Double.parseDouble(amountTf.getText());
+                if (amount < 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this,
+                        "Enter a valid number",
+                        "Input Error",
+                JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            //Calculate and display emissions
+            double emissions = calculator.calculateEmissions(type, amount);
+            emissionsTf.setText(String.format("%.2f", emissions));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error calculating emissions: " + e.getMessage(),
+                    "Error",
+            JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_calculateBtnActionPerformed
+    //Clears input fields
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        emissionsTypeCombo.setSelectedIndex(0);
+        amountTf.setText("");
+        emissionsTf.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
+    //Saves current record
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        try {
+            //Validates all fields have data
+            if (emissionsTypeCombo.getSelectedItem().toString().equals("Choose") ||
+            amountTf.getText().isEmpty() ||
+            emissionsTf.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Calculate before saving",
+                    "Error",
+            JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            //Gets values to create record
+        String type = emissionsTypeCombo.getSelectedItem().toString();
+        double amount = Double.parseDouble(amountTf.getText());
+        double emissions = Double.parseDouble(emissionsTf.getText());
+        
+        EmissionsRecord record = new EmissionsRecord(type, amount, emissions);
+        emissionRecords.add(record);
+        
+        JOptionPane.showMessageDialog(this,
+                "Record saved",
+                "Success",
+        JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error saving: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+    //Deletes recent record
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        if (emissionRecords.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "No records",
+                    "Deleted",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        //Confirm deletion
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Are your sure",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            emissionRecords.remove(emissionRecords.size()-1);
+            JOptionPane.showMessageDialog(this,
+                    "Delete Successfull",
+                    "Delete Record",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -174,17 +328,17 @@ public class CarbonFootprintTracker extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amountLbl;
     private javax.swing.JTextField amountTf;
     private javax.swing.JButton calculateBtn;
     private javax.swing.JButton carbonbackBtn;
     private javax.swing.JButton clearBtn;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel emissionsLbl;
     private javax.swing.JTextField emissionsTf;
     private javax.swing.JComboBox<String> emissionsTypeCombo;
-    private javax.swing.JLabel typeLbl;
-    private javax.swing.JTextField typeTf;
+    private javax.swing.JButton recordsBtn;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

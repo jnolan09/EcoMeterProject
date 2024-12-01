@@ -7,7 +7,7 @@
       <Dimension value="[400, 350]"/>
     </Property>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[400, 500]"/>
+      <Dimension value="[400, 400]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -29,45 +29,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="calculateBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="clearBtn" min="-2" pref="75" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="emissionsTypeCombo" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="emissionsTypeCombo" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="amountLbl" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="emissionsLbl" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="21" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="emissionsLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveBtn" min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="typeLbl" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                          <EmptySpace min="77" pref="77" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="emissionsTf" min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="recordsBtn" min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="typeTf" pref="104" max="32767" attributes="0"/>
-                          <Component id="emissionsTf" alignment="1" max="32767" attributes="0"/>
-                          <Component id="amountTf" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="carbonbackBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="amountLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="amountTf" min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="carbonbackBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="calculateBtn" max="32767" attributes="0"/>
+                  <Component id="clearBtn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="deleteBtn" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,39 +68,32 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="emissionsTypeCombo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="calculateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="amountLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="amountTf" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="typeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="typeTf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="amountTf" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="amountLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="emissionsTf" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emissionsLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="emissionsTf" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="clearBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="calculateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="recordsBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="carbonbackBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="156" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="typeLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Type:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="emissionsLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Emissions: "/>
@@ -123,11 +108,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Calculate"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculateBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="clearBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="carbonbackBtn">
       <Properties>
@@ -153,14 +144,33 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="typeTf">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeTfActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="amountTf">
     </Component>
     <Component class="javax.swing.JTextField" name="emissionsTf">
+    </Component>
+    <Component class="javax.swing.JButton" name="saveBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="deleteBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="recordsBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Records"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recordsBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

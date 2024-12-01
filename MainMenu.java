@@ -86,9 +86,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_carbonBtnActionPerformed
 
     private void transportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportBtnActionPerformed
-        TransportTracker tracker = new TransportTracker(this);
-        tracker.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_transportBtnActionPerformed
 
     /**
